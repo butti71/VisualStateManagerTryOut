@@ -1,4 +1,4 @@
-This is a Uno MVUX code to try out the example of the VisualStateManager Extensions which is located here:
+This is an Uno MVUX port of the code which is from the MVVM example of the VisualStateManager Extensions which is located here:
 
  https://platform.uno/docs/articles/external/uno.toolkit.ui/doc/helpers/VisualStateManager-extensions.html 
 

@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "VisualStateManagerTryOut",
+  "display": "standalone",
+  "name": "VisualStateManagerTryOut",
+  "short_name": "VisualStateManagerTryOut",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}

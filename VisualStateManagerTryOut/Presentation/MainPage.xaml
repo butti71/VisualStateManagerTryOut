@@ -1,0 +1,88 @@
+<Page x:Class="VisualStateManagerTryOut.Presentation.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:VisualStateManagerTryOut.Presentation"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      utu:VisualStateManagerExtensions.States="{Binding PageState, Mode=OneWay}"
+      xmlns:um="using:Uno.Material"
+      NavigationCacheMode="Required"
+      Background="{ThemeResource BackgroundBrush}">
+
+  <!--Code from: https://platform.uno/docs/articles/external/uno.toolkit.ui/doc/helpers/VisualStateManager-extensions.html -->
+
+  <ScrollViewer>
+    <Grid ColumnDefinitions="Auto"
+          RowDefinitions="Auto,*">
+      <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="PageStates">
+          <VisualStateGroup.Transitions>
+            <VisualTransition From="Red"
+                              To="Green">
+              <Storyboard>
+                <ColorAnimation Storyboard.TargetName="BackgroundBorder"
+                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                From="Red"
+                                To="Green"
+                                Duration="00:00:00.333"/>
+              </Storyboard>
+            </VisualTransition>
+            <!-- repeats for every permutation of [Red,Green,Blue] ... -->
+          </VisualStateGroup.Transitions>
+          <VisualState x:Name="Red">
+            <VisualState.Setters>
+              <Setter Target="BackgroundBorder.Background"
+                      Value="Red"/>
+            </VisualState.Setters>
+          </VisualState>
+          <VisualState x:Name="Green">
+            <VisualState.Setters>
+              <Setter Target="BackgroundBorder.Background"
+                      Value="Green"/>
+            </VisualState.Setters>
+          </VisualState>
+          <VisualState x:Name="Blue">
+            <VisualState.Setters>
+              <Setter Target="BackgroundBorder.Background"
+                      Value="Blue"/>
+            </VisualState.Setters>
+          </VisualState>
+        </VisualStateGroup>
+      </VisualStateManager.VisualStateGroups>
+
+      <utu:NavigationBar Content="VisualStateManager Extensions"/>
+      <StackPanel Grid.Row="1"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Spacing="16">
+        <Button
+          Content="Red"
+          Command="{Binding ChangePageStateCommand}"
+          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"
+          CornerRadius="0"
+          HorizontalAlignment="Stretch"/>
+        <Button
+          Content="Green"
+          Command="{Binding ChangePageStateCommand}"
+          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"
+          CornerRadius="0"
+          HorizontalAlignment="Stretch"/>
+        <Button
+          Content="Blue"
+          Command="{Binding ChangePageStateCommand}"
+          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"
+          CornerRadius="0"
+          HorizontalAlignment="Stretch"/>
+        <Border
+          Width="100"
+          Height="100"
+          x:Name="BackgroundBorder"
+          Background="Red"/>
+        <TextBox Text="{Binding PageState, Mode=TwoWay}"
+                 PlaceholderText="Current State"/>
+        <HyperlinkButton Content="VisualStateManager Extensions Page"
+                         NavigateUri="https://platform.uno/docs/articles/external/uno.toolkit.ui/doc/helpers/VisualStateManager-extensions.html"/>
+      </StackPanel>
+    </Grid>
+  </ScrollViewer>
+</Page>
